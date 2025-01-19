@@ -16,8 +16,10 @@ function highlightCheckedOption(e){
 }
 
 function getMatchingCatsArray(){
-    const checkedEmotion = document.querySelector("input[type='radio']:checked").value
-    console.log(checkedEmotion)
+    if(document.querySelector("input[type='radio']:checked")){
+        const checkedEmotion = document.querySelector("input[type='radio']:checked").value
+        console.log(checkedEmotion)
+    }
 }
 
 function getEmotionsArray(cats){
