@@ -2,10 +2,10 @@
 import { catsData } from "./data.js"
 
 const emotionRadios = document.getElementById("emotion-radios")
-const getImage = document.getElementById("get-image-btn")
+const getImageBtn = document.getElementById("get-image-btn")
 
 emotionRadios.addEventListener('change', highlightCheckedOption)
-getImage.addEventListener('click', getMatchingCatsArray)
+getImageBtn.addEventListener('click', getMatchingCatsArray)
 
 function highlightCheckedOption(e){
     const radios = document.getElementsByClassName("radio")
