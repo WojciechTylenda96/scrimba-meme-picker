@@ -6,7 +6,7 @@ const getImageBtn = document.getElementById("get-image-btn")
 const gifsOnlyOption = document.getElementById("gifs-only-option")
 
 emotionRadios.addEventListener('change', highlightCheckedOption)
-getImageBtn.addEventListener('click', getMatchingCatsArray)
+getImageBtn.addEventListener('click', renderCat)
 
 // dodaje klasę css dla aktywnego wyboru
 function highlightCheckedOption(e){
@@ -17,15 +17,40 @@ function highlightCheckedOption(e){
     document.getElementById(e.target.id).parentElement.classList.add("highlight")
 }
 
-// pokazuje w konsoli wartość wybranego pola (emocja) oraz czy zaznaczono opcję "GIFs only"
+// zwraca tabelę zawierającą memy pasujące do wybranych kryteriów
 function getMatchingCatsArray(){
     if(document.querySelector("input[type='radio']:checked")){
         const checkedEmotion = document.querySelector("input[type='radio']:checked").value
-        console.log(checkedEmotion)
+        const isGif = gifsOnlyOption.checked
+        const matchingCatsArray = catsData.filter(function(cat){
+            if(isGif){
+                return cat.emotionTags.includes(checkedEmotion) && cat.isGif
+            } else {
+                return cat.emotionTags.includes(checkedEmotion) 
+            }
+        })
+        return matchingCatsArray
     }
+}
 
-    const isGifOnly = gifsOnlyOption.checked
-    console.log(isGifOnly)
+function getSingleCatObject(){
+    const catsArray = getMatchingCatsArray()
+
+    if (catsArray.length === 1){
+        console.log(catsArray[0])
+    } else {
+        const index = Math.floor(Math.random()*catsArray.length)
+        console.log(catsArray[index])
+    }
+}
+
+// function getRandomNumber(){
+//     let number = Math.floor(Math.random()*6)
+//     console.log(number)
+// }
+
+function renderCat(){
+    getSingleCatObject() // tymczasowo
 }
 
 // tworzy tabele z emocjami na podstawie dostępnych memów
