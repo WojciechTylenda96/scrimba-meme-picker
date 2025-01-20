@@ -7,6 +7,7 @@ const getImageBtn = document.getElementById("get-image-btn")
 emotionRadios.addEventListener('change', highlightCheckedOption)
 getImageBtn.addEventListener('click', getMatchingCatsArray)
 
+// dodaje klasę css dla aktywnego wyboru
 function highlightCheckedOption(e){
     const radios = document.getElementsByClassName("radio")
     for (let radio of radios){
@@ -15,6 +16,7 @@ function highlightCheckedOption(e){
     document.getElementById(e.target.id).parentElement.classList.add("highlight")
 }
 
+// pokazuje w konsoli wartość wybranego pola (emocja)
 function getMatchingCatsArray(){
     if(document.querySelector("input[type='radio']:checked")){
         const checkedEmotion = document.querySelector("input[type='radio']:checked").value
@@ -22,6 +24,7 @@ function getMatchingCatsArray(){
     }
 }
 
+// tworzy tabele z emocjami na podstawie dostępnych memów
 function getEmotionsArray(cats){
     const emotionsArray = []
     for (let cat of cats){
@@ -34,6 +37,7 @@ function getEmotionsArray(cats){
     return emotionsArray
 }
 
+// renderuje pola wyboru emocji na podstawie wcześniej stworzonej tabeli emocji
 function renderEmotionsRadios(cats){
     const emotions = getEmotionsArray(cats)
     let radioItems = ""
