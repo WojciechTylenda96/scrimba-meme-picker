@@ -24,13 +24,8 @@ function getMatchingCatsArray(){
         console.log(checkedEmotion)
     }
 
-    if(document.querySelector("input[type='checkbox']:checked")){
-        const isGifOnly = true
-        console.log(isGifOnly)
-    } else {
-        const isGifOnly = false
-        console.log(isGifOnly)
-    }
+    const isGifOnly = gifsOnlyOption.checked
+    console.log(isGifOnly)
 }
 
 // tworzy tabele z emocjami na podstawie dostępnych memów
